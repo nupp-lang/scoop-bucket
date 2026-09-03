@@ -51,7 +51,9 @@ fi
 
 archive="$release_directory/nupp-windows-x86_64.zip"
 test -f "$archive"
-unzip -Z1 "$archive" | grep -Eq '^(\./)?nupp\.exe$'
+archive_listing=$(mktemp)
+unzip -Z1 "$archive" > "$archive_listing"
+grep -Eq '^(\./)?nupp\.exe$' "$archive_listing"
 
 if command -v sha256sum >/dev/null 2>&1; then
   archive_sha=$(sha256sum "$archive" | awk '{print $1}')
