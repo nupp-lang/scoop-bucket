@@ -1,0 +1,32 @@
+name: Test bucket
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "bucket/nupp.json"
+      - ".github/workflows/test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    runs-on: windows-latest
+    steps:
+      - name: Install Scoop
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+          Invoke-RestMethod https://get.scoop.sh | Invoke-Expression
+          $status = $LASTEXITCODE
+          "$env:USERPROFILE\scoop\shims" |
+            Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          exit $status
+
+      - name: Install Nupp from the public bucket
+        shell: pwsh
+        run: |
+          scoop bucket add nupp https://github.com/nupp-lang/scoop-bucket
+          scoop install nupp
+          nupp --help
