@@ -1,10 +1,10 @@
 {
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Typed programming language for LuaJIT with an optimizing compiler",
     "homepage": "https://github.com/nupp-lang/nupp",
     "license": "Unknown",
-    "url": "https://github.com/nupp-lang/nupp/releases/download/v0.0.4/nupp-windows-x86_64.zip",
-    "hash": "458a849f91d38f55e2eee0076957f86a9bae10bb64b3e7b33d8e648229d9a257",
+    "url": "https://github.com/nupp-lang/nupp/releases/download/v0.0.5/nupp-windows-x86_64.zip",
+    "hash": "5033fe341f107accb5f2921f03ccadf9bdef0ea0a3f7b7cd6e4aeaf70a8a14f8",
     "bin": "nupp.exe",
     "checkver": "github",
     "autoupdate": {
